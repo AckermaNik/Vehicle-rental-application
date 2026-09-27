@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Nikoleta">
+    <meta name="description" content="Registration form">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/registration.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!--    <script src="js/code.js"></script>
+-->  <script src="js/ajax.js"></script>
+    <title>Add form</title>
+</head>
+<body>
+
+    <div class="top">
+        <header id="title">
+            <h1>Add</h1>
+        </header>
+       
+    </div>
+
+    <div class="container">
+        <div class="grid">
+            <form id="myForm"  name="myForm" action="AddCar" method="POST">
+
+                <br>
+                <label for="reg_no">* Registration number</label>
+                <input type="text" id="reg_no" name="reg_no" pattern=".{1,10}" required onchange="validateReg_no();return false">
+                <div id="reg_no_error"></div>
+                
+                <div id="type_display" style="display:none">
+                    <label for="type">Type</label>
+                    <input type="text" id="type" name="type" value="car">
+                    <label for="count">count</label>
+                    <input type="number" id="count" name="count" value="0">
+                </div> 
+                <label for="km">* Km </label>
+                <input type="number" id="km" name="km" required>
+                <br>
+                <br>
+                <label for="colour">* Color</label>
+                <input type="text" id="colour" name="colour" pattern="[A-Za-z]{1,20}" required>
+                <br>
+                <br>
+                <label for="model">* Model</label>
+                <input type="text" id="model" name="model" pattern="[A-Za-z]{1,50}" required>
+                <br>
+                <br>
+                <label for="brand">* Brand</label>
+                <input type="text" id="brand" name="brand"  pattern=".{1,30}" required>
+                <br>
+                <br>
+                <label for="car_type">*Type </label>
+                <input type="text" id="car_type" name="car_type" pattern=".{1,30}"  required>
+                <br>
+                <br>
+                <label for="passenger_num">*Passenger number</label>
+                <input type="number" id="passenger_num" name="passenger_num" min="1" required>
+                <br>
+                <br>
+                <label for="daily_rent_cost">*Daily rent cost</label>
+                <input type="number" id="daily_rent_cost" name="daily_rent_cost" step="any" min="0" required>
+                <br>
+                <br>
+                <label for="daily_insurance_cost">*Daily insurance cost</label>
+                <input type="number" id="daily_insurance_cost" name="daily_insurance_cost" step="any"  min="0" required>
+                <br>
+                <br>
+                <p id="endphrase">The fields with the symbol "*" are mandatory!!</p>
+                <input type="submit" value="Add" id="submit_button">
+            </form>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!--    <script src="js/code.js"></script>
+    <script src="js/ajax.js"></script>-->
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="js/ajax.js"></script>
+    <title>User Authentication</title>
+    
+</head>
+<body>
+<div class="top">
+    <header id="title">
+     <h1>Admin Page!</h1>
+    </header>
+</div>
+    
+<div class="container">
+    <div class="grid">
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> 
+        <div id="break"></div>
+        <br>
+        <br>
+        <button  class="button" onclick="initDB()">Initialize Database</button>
+        <br>
+        <br>
+    <label for="new_veh">Add a Vehicle </label>
+    <br>
+    <br>
+    <input type="button" id="new_veh" name="new_veh" value="new" onclick="window.location.href='add_veh.html'">
+    <br>
+    <br>
+    <label for="return">Make a return </label>
+    <br>
+    <br>
+    <input type="button" id="return" name="return" value="return" onclick="window.location.href='return.html'">
+    <br>
+    <br>
+    <label for="incident">Report an incident </label>
+    <br>
+    <br>
+    <input type="button" id="incident" name="incident" value="report" onclick="window.location.href='Report.html'">
+    <br>
+    <br>
+    <label for="q1">Status of available or rented vehicles by category </label>
+    <br>
+    <br>
+    <input type="button" id="check_cars" name="check_cars" value="Cars" onclick="getAllCars();return false">
+    <div id="car_infos" style="display:none">
+        <p>Cars</p>
+    </div>
+    <br>
+    <br>
+    <input type="button" id="check_motors" name="check_motors" value="Motorbikes" onclick="getAllMotors();return false">
+
+    <div id="motor_infos" style="display:none">
+        <p>Motorbikes</p>
+    </div>
+    <br>
+    <br>
+    <input type="button" id="check_bikes" name="check_bikes" value="Bikes" onclick="getAllBikes();return false">
+
+    <div id="bike_infos" style="display:none">
+        <p>Bikes</p>
+    </div>
+    <br>
+    <br>
+    <input type="button" id="check_skates" name="check_skates" value="Skateboards" onclick="getAllSkates();return false">
+    <div id="skate_infos" style="display:none">
+        <p>Skates</p>
+    </div>
+    <br>
+    <div id="display_q1" style="display:none"></div>
+    <br>
+    <label for="q2">Rental status, total rental income and total service cost by time period </label>
+    <br><br>
+    <label for="q2">Select the starting period: </label>
+    <br><br>
+    <input type="date" id="start" name="start" required>
+    <br><br>
+    <label for="q2">Select the ending period: </label>
+    <br><br>
+    <input type="date" id="end" name="end" required>
+    <br><br>
+    <input type="button" id="status" name="status" value="Show Status" onclick="getRentedVehiclesStatus();return false">
+    <br>
+    <div id="statusResult"></div>
+    <br>
+    <input type="button" id="income" name="income" value="Show Income" onclick="getRentedIncome();return false">
+    <br>
+    <div id="incomeResult"></div>
+    <br>
+    <input type="button" id="costs" name="costs" value="Show service costs" onclick="getServiceCost();return false">
+    <br>
+    <div id="costResult"></div>
+    <br>
+    <br>
+    <div id="display_q2" style="display:none"></div>
+    <br>
+    <label for="q3">Maximum, minimum and average rental duration per vehicle category </label>
+    <br>
+    <br>
+    <input type="button" id="q3" name="q3" value="Get" onclick="window.location.href='rental_duration_statistics.html'">
+    <br>
+    <div id="display_q3" style="display:none"></div>
+    <br>
+    <label for="q4">Rental income per vehicle category </label>
+    <br>
+    <br>
+    <input type="button" id="carincome" name="carincome" value="Cars" onclick="getCarIncome();return false">
+    <div id="car_income" style="display:none">
+        <p>Cars</p>
+    </div>
+    <br>
+    <br>
+    <input type="button" id="motorincome" name="motorincome" value="Motorbikes" onclick="getMotorIncome();return false">
+
+    <div id="motor_income" style="display:none">
+        <p>Motorbikes</p>
+    </div>
+    <br>
+    <br>
+    <input type="button" id="bikeincome" name="bikeincome" value="Bikes" onclick="getBikeIncome();return false">
+
+    <div id="bike_income" style="display:none">
+        <p>Bikes</p>
+    </div>
+    <br>
+    <br>
+    <input type="button" id="skateincome" name="skateincome" value="Skateboards" onclick="getSkateIncome();return false">
+    <div id="skate_income" style="display:none">
+        <p>Skates</p>
+    </div>
+    <br>
+    <div id="display_q4" style="display:none"></div>
+    <br>
+
+    <br>
+    <label for="q6">Most popular vehicle by category (the vehicle from each category that has been rented most of the time)</label>
+    <br>
+    <br>
+    <input type="button" id="q6" name="q6" value="Get" onclick="window.location.href='most_popular.html'">
+    <br>   
+    <div id="display_q6" style="display:none"></div>
+ </div>
+</div>
+
+</body>
+</html>
+

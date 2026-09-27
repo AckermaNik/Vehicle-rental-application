@@ -1,0 +1,12 @@
+# Local database credentials and settings
+.env
+.env.*
+!.env.example
+
+# Maven build output
+/target/
+
+# Operating system and IDE files
+.DS_Store
+.idea/
+.vscode/

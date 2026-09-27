@@ -1,0 +1,129 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Jan 1, 2024, 6:21:31 PM
+    Author     : 30697
+*/
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Viewport height */
+    margin: 0; /* Remove default body margin */
+    flex-direction: column; /* Stack items vertically */
+}
+
+h1{
+
+    color: black;
+    font-size: 40px;
+    padding-top: 1%;
+    padding-left: 55px;
+    text-align: center;
+   
+}
+
+.blank-middle{
+    padding-top: 4%;
+}
+
+.header-container{
+    width: 50%;
+    padding-bottom: 1%;
+    margin-bottom: 30px;
+    border-radius: 55px;
+    background-color: rgba(255, 255, 255, 0.88);
+    box-shadow: 5px 20px 70px rgb(19, 36, 19);
+    align-content: center;
+}
+
+.container {
+    padding-bottom: 2%;
+    margin-bottom: 30px;
+    border-radius: 55px;
+    background-color: rgba(255, 255, 255, 0.88);
+    box-shadow: 5px 20px 70px rgb(19, 36, 19);
+    align-content: center;
+}
+
+.grid{ /*for centering the items*/
+    padding-left: 90px;
+    display: grid;
+    place-items: center;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 14px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+input[value='Cancel'] {
+    width: 100%;
+    background-color: #adadad;
+    color: #000000;
+    padding: 14px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+  
+  input[type=submit]:hover {
+      background-color: #adadad;
+  }
+
+  input[value='Cancel']:hover {
+      background-color: #000000;
+      color: #ffffff;
+  }
+
+  input[type=text], select ,input[type=tel],input[type=email],input[type=password],input[type=date], input[type=radio],input[type=url]{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=button],#Verify_Location,#maps{
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #45a049;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url("media/evback.jpg");
+    /*backdrop-filter: blur(1px);*/
+    background-size: auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+#endphrase{
+    background-color: #ffffff;
+    color: #000000;
+    width: 80%;
+}
+
+#errorMes1,#errorMes2,#email_error,#username_error{
+    width: 80%;
+    background-color: #ee1616;
+    color: aliceblue;
+    border-radius: 4px;
+    text-align: center;
+}

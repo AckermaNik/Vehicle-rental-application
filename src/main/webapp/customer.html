@@ -1,0 +1,92 @@
+
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/customer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="js/ajax.js"></script>
+    <title>User Authentication</title>
+    
+</head>
+<body>
+<div class="top">
+    <header id="title">
+     <h1>Customer Page!</h1>
+     <br>
+     <br>
+    </header>
+</div>
+    
+<div class="container">
+    <div class="grid">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div id="break"></div>
+    <label for="check_cars" id="check_cars_title">Check Available Cars</label>
+    <br>
+    <br>
+    <input type="button" id="check_cars" name="check_cars" value="Cars" onclick="get_All_Available_Cars();return false">
+    <br>
+    <br>
+    
+    <div id="car_infos" style="display:none">
+        <p>Cars</p>
+    </div>
+    <br>
+    <label for="check_motors" id="check_motors_tile">Check Available Motorbikes</label>
+    <br>
+    <br>
+    <input type="button" id="check_motors" name="check_motors" value="Motorbikes" onclick="get_All_Available_Motors();return false">
+    <br>
+    <br>
+    <div id="motor_infos" style="display:none">
+        <p>Motorbikes</p>
+    </div>
+    <br>
+   
+    <label for="check_bikes" id="check_bikes_tile">Check Available Bikes</label>
+    <br>
+    <br>
+    <input type="button" id="check_bikes" name="check_bikes" value="Bikes" onclick="get_All_Available_Bikes();return false">
+    <br>
+    <br>
+    <div id="bike_infos" style="display:none">
+        <p>Bikes</p>
+    </div>
+    <br>
+    
+    <label for="check_skates" id="check_skates_tile">Check Available Skateboards</label>
+    <br>
+    <br>
+    <input type="button" id="check_skates" name="check_skates" value="Skateboards" onclick="get_All_Available_Skates();return false">
+    <div id="skate_infos" style="display:none">
+        <p>Skates</p>
+    </div>
+    <br>
+    <br>
+    <label for="rent">Rent a vehicle </label>
+    <br>
+    <br>
+    <input type="button" id="rent" name="rent" value="rent" onclick="window.location.href='rent.html'">
+    </div>
+    
+    <div id="ajaxContent"></div>
+
+            
+</div>
+
+</body>
+</html>
+

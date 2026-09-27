@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Nikoleta">
+    <meta name="description" content="Registration form">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/registration.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!--    <script src="js/code.js"></script>
+-->  <script src="js/ajax.js"></script>
+    <title>Rent Submission</title>
+</head>
+<body>
+
+    <div class="top">
+        <header id="title">
+            <h1>Rent Submission</h1>
+        </header>
+       
+    </div>
+
+    <div class="container">
+        <div class="grid">
+            <form id="myForm"  name="myForm" action="RentAction" method="POST">
+                
+                <br>
+                <label for="username">* Username</label>
+                <input type="text" id="username" name="username" pattern=".{1,30}" required >
+                
+                <br>
+                <br>
+                <label for="f_name">* First Name</label>
+                <input type="text" id="f_name" name="f_name" placeholder="px.Nikoleta" pattern="[A-Za-z]{1,30}" required>
+                <br>
+                <br>
+                <label for="driver_fname">* Drivers First Name </label>
+                <input type="text" id="driver_fname" name="driver_fname" placeholder="px.Xenaki" pattern="[A-Za-z]{1,30}" required>
+                <br>
+                <br>
+                <label for="driver_lname">* Drivers Last Name </label>
+                <input type="text" id="driver_lname" name="driver_lname" placeholder="px.Xenaki" pattern="[A-Za-z]{1,30}" required onblur="CheckDriversName();return false">
+                <div id="SameDriverError"></div> <!-- for renting -->
+                <br>
+                <div style="display:none" id="driver_lic">
+                <label for="driver_lic_no">*Drivers License Number</label>
+                <input type="text" id="driver_lic_no" name="driver_lic_no" pattern="^[A-Z]{2}\w{8,10}$">
+                </div>
+                <br>
+                <br>
+                <label for="rent_date">* Rent Date</label>
+                <input type="date" id="rent_date" name="rent_date" required>
+                <br>
+                <br>
+                <label for="rent_hour">* Rent Hour</label>
+                <input type="time" id="rent_hour" name="rent_hour" required value="10:30">
+                <br>
+                <br>
+                <label for="return_date">* Return Date</label>
+                <input type="date" id="return_date" name="return_date" required>
+                <br>
+                <br>
+                <label for="return_hour">* Return Hour</label>
+                <input type="time" id="return_hour" name="return_hour" required value="22:30">
+                <br>
+                <br>
+                <label for="card_no">*Credit Card Number </label>
+                <input type="text" id="card_no" name="card_no" pattern="\d{16,20}" required>
+                <br>
+                <br>
+                <label for="max_price"> Select up to what price you want to rent:
+                    <input type="range" id="max_price" name="max_price" value="5000" min="0" max="500" onchange="show_price(this.value,'price')">
+                </label>
+                <br>
+                <div id="price">
+                </div>
+                <br>
+                <label for="insurance_checkbox"> Check the box if you want to pay for daily insurance too:
+                    <input type="checkbox" id="insurance_checkbox" value="checked" name="insurance_checkbox">
+                   
+                </label>           
+                <br>
+                <br>
+                <div id="car-btn">
+                <label for="rent_car" id="rent_car_title">Rent Car</label>
+                <br>
+                <input type="button" id="rent_car" name="rent_car" value="Cars" onclick="get_All_Available_Cars_For_Rent(max_price.value,rent_date.value);return false">
+                </div>
+                <br>
+                <br>
+
+                <div id="car_infos" style="display:none">
+                    <p>Cars</p>
+                </div>
+                <br>
+                <br>
+                <div id="motor-btn">
+                <label for="rent_motor" id="rent_motor_tile">Rent Motorbike</label>
+                <br>
+                <input type="button" id="rent_motor" name="rent_motor" value="Motorbikes" onclick="get_All_Available_Motors_For_Rent(max_price.value,rent_date.value);return false">
+                </div>
+                <br>
+                <br>
+                <div id="motor_infos" style="display:none">
+                    <p>Motorbikes</p>
+                </div>
+                <br>
+                <div id="bike-btn">
+                <label for="rent_bikes" id="rent_bikes_tile">Rent Bike</label>
+                <br>
+                <input type="button" id="rent_bikes" name="rent_bikes" value="Bikes" onclick="get_All_Available_Bikes_For_Rent(max_price.value,rent_date.value);return false">
+                </div>
+                <br>
+                <br>
+                <div id="bike_infos" style="display:none">
+                    <p>Bikes</p>
+                </div>
+                <br>
+                <div id="skate-btn">
+                <label for="rent_skates" id="rent_skates_tile">Rent Skateboard</label>
+                <br>
+                <input type="button" id="rent_skates" name="rent_skates" value="Skateboards" onclick="get_All_Available_Skates_For_Rent(max_price.value,rent_date.value);return false">
+                </div>
+
+                <div id="skate_infos" style="display:none">
+                    <p>Skates</p>
+                </div>
+                <br>
+                <br>
+                <p id="endphrase">The fields with the symbol "*" are mandatory!!</p>
+                <input type="submit" value="Rent" id="submit_button">
+            </form>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!--    <script src="js/code.js"></script>
+    <script src="js/ajax.js"></script>-->
+</body>
+</html>
