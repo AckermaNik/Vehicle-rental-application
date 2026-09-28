@@ -443,7 +443,7 @@ public class Incident extends HttpServlet {
 
         Random random = new Random();
 
-        final_cost += random.nextDouble(0, vehicle.getDaily_rent_cost() / 10.0);
+        final_cost += random.nextDouble() * (vehicle.getDaily_rent_cost() / 10.0);
 
         //Finally, get rid of decimals...
         final_cost = (int) final_cost;

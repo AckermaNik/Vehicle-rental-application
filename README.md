@@ -75,6 +75,33 @@ The artifact is written to:
 target/Project_Vaseis-1.0-SNAPSHOT.war
 ```
 
+### Deploying the complete application to Render
+
+The repository includes a `Dockerfile` and `render.yaml` for deploying the
+frontend and Java servlet backend together as one Render Web Service. The
+Docker image uses Maven and Tomcat 9 because this project uses the
+`javax.servlet.*` API.
+
+1. Push the repository to GitHub.
+2. In Render, create a Blueprint from the repository, or create a Docker Web
+   Service manually.
+3. Create a separate private MySQL service using Render's MySQL deployment
+   template. Set its persistent disk mount path to `/var/lib/mysql`.
+4. Configure the web service's `DB_HOST` to the MySQL service's private
+   hostname, and set `DB_USERNAME`, `DB_PASSWORD`, `DB_NAME`, and `DB_PORT`.
+5. Keep `ENABLE_DB_INIT=false` for the public service.
+
+The application is deployed as `ROOT.war`, so the public site is served from
+the Render service root. The health check uses `/index.html` and does not
+depend on the optional JAX-RS endpoint.
+
+For the first database setup, configure the MySQL service to create the
+`HY360_2023` database, then use a disposable database and a controlled
+maintenance window: temporarily set `ENABLE_DB_INIT=true`, call `/InitDB` once,
+then set it back to `false` and redeploy. The initializer creates tables and
+development seed data; it is not a migration system and no longer requires
+the application user to create databases.
+
 Deploy the WAR to the compatible application server and open the context path assigned by that server. The MySQL connector and other application libraries are declared in `pom.xml`; the Java EE API is provided by the container.
 
 ### Development database initialization

@@ -22,6 +22,10 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class InitDB extends HttpServlet {
 
+    private static boolean isDatabaseInitializationEnabled() {
+        return "true".equalsIgnoreCase(System.getenv("ENABLE_DB_INIT"));
+    }
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -62,10 +66,14 @@ public class InitDB extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        if (!isDatabaseInitializationEnabled()) {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+            return;
+        }
+
         try {
             response.setContentType("text/html;charset=UTF-8");
             InitDatabase init=new InitDatabase();
-            init.initDatabase();
             init.initTables();
             init.addToDatabaseExamples();
             init.databaseToJSON();
