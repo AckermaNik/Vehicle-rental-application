@@ -9,8 +9,6 @@ import database.init.InitDatabase;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -79,9 +77,9 @@ public class InitDB extends HttpServlet {
             init.databaseToJSON();
         } catch (SQLException ex) {
             response.sendError(500);
-            Logger.getLogger(InitDB.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(InitDB.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
 
     }
